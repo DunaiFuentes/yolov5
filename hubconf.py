@@ -35,7 +35,7 @@ def create(name, pretrained, channels, classes, autoshape):
         cfg = list((Path(__file__).parent / 'models').rglob(f'{name}.yaml'))[0]  # model.yaml path
         model = Model(cfg, channels, classes)
         if pretrained:
-            fname = f'{name}.pt'  # checkpoint filename
+            fname = f'data/perception/models/{name}.pt'  # checkpoint filename
             attempt_download(fname)  # download if not found locally
             ckpt = torch.load(fname, map_location=torch.device('cpu'))  # load
             msd = model.state_dict()  # model state_dict
